@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-row class="tac">
+        <el-col :span="12">
+            <h5>默认颜色</h5>
+            <el-menu
+                    default-active="2"
+                    class="el-menu-vertical-demo"
+                    @open="handleOpen"
+                    @close="handleClose">
+                <el-submenu index="1">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>导航一</span>
+                    </template>
+                    <el-menu-item-group>
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="1-1">选项1</el-menu-item>
+                        <el-menu-item index="1-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2">
+                        <el-menu-item index="1-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="1-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="1-4-1">选项1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-submenu index="2">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>导航一</span>
+                    </template>
+                    <el-menu-item-group>
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="1-1">选项1</el-menu-item>
+                        <el-menu-item index="1-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2">
+                        <el-menu-item index="1-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="1-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="1-4-1">选项1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+            </el-menu>
+        </el-col>
+    </el-row>
+
+
+    <el-card v-for="i in 5":key="i" class="box-card">
+        <div slot="header" class="clearfix">
+            <span>卡片名称</span>
+            <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+        </div>
+        <div v-for="o in 4" :key="o" class="text item">
+            {{'列表内容 ' + o }}
+        </div>
+    </el-card>
+
+    <script>
+        export default {
+            methods: {
+                handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+            }
+        }
+    </script>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { visible: false }
+        }
+    })
+</script>
+<style>
+.el-menu-vertical-demo{
+    width: 200px;
+    }
+.text {
+    font-size: 14px;
+}
+
+.item {
+    margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both
+}
+
+.box-card {
+
+}
+</style>
+
+</html>
